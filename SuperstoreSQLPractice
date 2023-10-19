@@ -1,0 +1,12 @@
+SELECT SUM(item_id)
+FROM superstore;
+
+SELECT MAX(item_id)
+FROM superstore;
+
+SELECT COUNT(item_name)
+FROM superstore;
+
+SELECT SUM(price),category
+FROM superstore
+GROUP BY category;
