@@ -10,3 +10,19 @@ FROM superstore;
 SELECT SUM(price),category
 FROM superstore
 GROUP BY category;
+
+SELECT*
+FROM superstore 
+ORDER BY price;
+
+SELECT SUM(price)
+FROM superstore; 
+
+SELECT item_name, price
+FROM superstore 
+WHERE category = 'Kitchen Supplies';
+
+
+SELECT item_name, price
+FROM superstore 
+WHERE category = 'Electronics';
