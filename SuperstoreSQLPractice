@@ -64,3 +64,32 @@ name
 , ROUND((modules_completed / modules_assigned)*100) AS 'ROUND(percent)'
 FROM modules
 ;
+SELECT patient_id
+, procedure_bill 
+, payment_received/procedure_bill AS payment_fraction 
+FROM billing 
+ORDER BY payment_fraction 
+
+SELECT patient_id
+, payment_received/procedure_bill AS payment_fraction
+, CASE
+WHEN (payment_received/procedure_bill) = 1 THEN "paid"
+WHEN (payment_received/procedure_bill) = 0 THEN "no payment"
+ELSE "in progress"
+END AS payment_status
+FROM billing 
+
+SELECT patient_id
+, payment_received / procedure_bill
+, CASE
+WHEN (payment_received / procedure_bill) = 1 THEN "paid"
+WHEN (payment_received / procedure_bill) = 0 THEN "no payment"
+WHEN (payment_received / procedure_bill) >= .75 THEN "75%+"
+WHEN (payment_received / procedure_bill) >= .5 THEN "50%+"
+WHEN (payment_received / procedure_bill) >= .25 THEN "25%+"
+ELSE "Under 25%"
+END AS payment_status
+FROM billing
+;
+
+
