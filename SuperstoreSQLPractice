@@ -55,4 +55,12 @@ FROM bank_products
 WHERE product_name LIKE '%reward%'
 or description LIKE '%reward%'
 
-
+SELECT
+name
+, (modules_completed / modules_assigned)*100 AS percent
+, ROUND((modules_completed / modules_assigned)*100, 3) AS 'ROUND(percent ,3)'
+, ROUND((modules_completed / modules_assigned)*100, 2) AS 'ROUND(percent ,2)'
+, ROUND((modules_completed / modules_assigned)*100, 1) AS 'ROUND(percent ,1)'
+, ROUND((modules_completed / modules_assigned)*100) AS 'ROUND(percent)'
+FROM modules
+;
