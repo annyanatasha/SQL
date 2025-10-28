@@ -92,4 +92,23 @@ END AS payment_status
 FROM billing
 ;
 
+SELECT patient_id, insurance_provider
+, SUM(procedure_bill-payment_received) AS payment_remaining
+FROM billing
+GROUP BY patient_id
+HAVING payment_remaining > 150
+
+SELECT insurance_provider 
+, COUNT (procedure_bill) AS lab_bills
+FROM billing
+WHERE procedure_code LIKE '80%'
+GROUP BY insurance_provider
+
+SELECT insurance_provider 
+, COUNT (procedure_bill) AS lab_bills
+FROM billing
+WHERE procedure_code LIKE '80%'
+GROUP BY insurance_provider
+HAVING COUNT (procedure_bill) >3;
+
 
