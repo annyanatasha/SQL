@@ -26,3 +26,33 @@ WHERE category = 'Kitchen Supplies';
 SELECT item_name, price
 FROM superstore 
 WHERE category = 'Electronics';
+
+SELECT product_name
+FROM bank_products;
+
+SELECT product_name
+FROM bank_products
+WHERE product_type = 'Checking'
+OR product_type = 'Savings'
+
+SELECT product_name, interest_rate
+FROM bank_products
+WHERE product_type='Savings'
+AND interest_rate>=0.75
+AND monthly_fee=0;
+
+SELECT product_name
+, description
+FROM bank_products 
+WHERE product_name IN ('Premium Checking', 'High Yield Savings Account', 'Platinum Credit Card', 'Gold Credit Card');
+
+SELECT product_name
+FROM bank_products 
+WHERE product_name LIKE 'Business%'
+
+SELECT product_name, description 
+FROM bank_products
+WHERE product_name LIKE '%reward%'
+or description LIKE '%reward%'
+
+
